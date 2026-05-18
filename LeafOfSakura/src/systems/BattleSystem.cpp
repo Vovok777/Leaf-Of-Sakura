@@ -19,6 +19,17 @@ std::string FormatMult(int pct) {
   return "x" + std::to_string(pct / 100) + "." +
          std::to_string((pct % 100) / 10);
 }
+
+// Взять HP конкретной части тела по её номеру (0=голова 1=тело 2=руки 3=ноги)
+int GetPartHp(const BodyParts& bp, int part) {
+  switch (part) {
+    case 0: return bp.head;
+    case 1: return bp.body;
+    case 2: return bp.arms;
+    case 3: return bp.legs;
+  }
+  return 0;
+}
 }  // namespace
 
 BattleSystem::BattleSystem(const GameDatabase& db) : db_(db) {}
@@ -128,59 +139,20 @@ AttackParams BattleSystem::MakeAttackParams(int part_id) const {
 void BattleSystem::HeroAttack(Hero& hero, Enemy& enemy, int body_part) {
   if (body_part < 0 || body_part > 3) body_part = 1;
 
-  const BodyParts& bp0 = enemy.GetBodyParts();
-  int hp0 = 0;
-  switch (body_part) {
-    case 0:
-      hp0 = bp0.head;
-      break;
-    case 1:
-      hp0 = bp0.body;
-      break;
-    case 2:
-      hp0 = bp0.arms;
-      break;
-    case 3:
-      hp0 = bp0.legs;
-      break;
-  }
+  int hp0 = GetPartHp(enemy.GetBodyParts(), body_part);
 
   int atk = hero.GetAttack();
-  bool hit = false;
   AttackParams p = MakeAttackParams(body_part);
+  bool hit = false;
   switch (body_part) {
-    case 0:
-      hit = enemy.TakeDamageToHead(atk, p);
-      break;
-    case 1:
-      hit = enemy.TakeDamageToBody(atk, p);
-      break;
-    case 2:
-      hit = enemy.TakeDamageToArms(atk, p);
-      break;
-    case 3:
-      hit = enemy.TakeDamageToLegs(atk, p);
-      break;
+    case 0: hit = enemy.TakeDamageToHead(atk, p); break;
+    case 1: hit = enemy.TakeDamageToBody(atk, p); break;
+    case 2: hit = enemy.TakeDamageToArms(atk, p); break;
+    case 3: hit = enemy.TakeDamageToLegs(atk, p); break;
   }
 
   if (hit) {
-    const BodyParts& bp1 = enemy.GetBodyParts();
-    int hp1 = 0;
-    switch (body_part) {
-      case 0:
-        hp1 = bp1.head;
-        break;
-      case 1:
-        hp1 = bp1.body;
-        break;
-      case 2:
-        hp1 = bp1.arms;
-        break;
-      case 3:
-        hp1 = bp1.legs;
-        break;
-    }
-    int dmg = hp0 - hp1;
+    int dmg = hp0 - GetPartHp(enemy.GetBodyParts(), body_part);
     std::string msg = "► " + hero.GetName() + " → " + kPartAcc[body_part] +
                       ": ПОПАДАНИЕ! Урон: " + std::to_string(dmg);
     if (body_part == 2 && enemy.AreArmsBroken()) msg += "  [руки сломаны!]";
@@ -194,59 +166,20 @@ void BattleSystem::HeroAttack(Hero& hero, Enemy& enemy, int body_part) {
 void BattleSystem::EnemyTurn(Hero& hero, Enemy& enemy) {
   int part = enemy.ChooseAttackPart();
 
-  const BodyParts& bp0 = hero.GetBodyParts();
-  int hp0 = 0;
-  switch (part) {
-    case 0:
-      hp0 = bp0.head;
-      break;
-    case 1:
-      hp0 = bp0.body;
-      break;
-    case 2:
-      hp0 = bp0.arms;
-      break;
-    case 3:
-      hp0 = bp0.legs;
-      break;
-  }
+  int hp0 = GetPartHp(hero.GetBodyParts(), part);
 
   int atk = enemy.GetAttack();
-  bool hit = false;
   AttackParams p = MakeAttackParams(part);
+  bool hit = false;
   switch (part) {
-    case 0:
-      hit = hero.TakeDamageToHead(atk, p);
-      break;
-    case 1:
-      hit = hero.TakeDamageToBody(atk, p);
-      break;
-    case 2:
-      hit = hero.TakeDamageToArms(atk, p);
-      break;
-    case 3:
-      hit = hero.TakeDamageToLegs(atk, p);
-      break;
+    case 0: hit = hero.TakeDamageToHead(atk, p); break;
+    case 1: hit = hero.TakeDamageToBody(atk, p); break;
+    case 2: hit = hero.TakeDamageToArms(atk, p); break;
+    case 3: hit = hero.TakeDamageToLegs(atk, p); break;
   }
 
   if (hit) {
-    const BodyParts& bp1 = hero.GetBodyParts();
-    int hp1 = 0;
-    switch (part) {
-      case 0:
-        hp1 = bp1.head;
-        break;
-      case 1:
-        hp1 = bp1.body;
-        break;
-      case 2:
-        hp1 = bp1.arms;
-        break;
-      case 3:
-        hp1 = bp1.legs;
-        break;
-    }
-    int dmg = hp0 - hp1;
+    int dmg = hp0 - GetPartHp(hero.GetBodyParts(), part);
     std::string msg = "► " + enemy.GetName() + " → " + kPartAcc[part] +
                       ": ПОПАДАНИЕ! Урон: " + std::to_string(dmg);
     if (part == 2 && hero.AreArmsBroken()) msg += "  [твои руки повреждены!]";

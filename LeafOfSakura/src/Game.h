@@ -1,6 +1,7 @@
 #pragma once
 #include "data/GameDatabase.h"
 #include "core/Hero.h"
+#include "core/Enemy.h"
 #include "items/Inventory.h"
 #include "systems/BattleSystem.h"
 #include "systems/DialogueSystem.h"
@@ -31,6 +32,8 @@ private:
   void TriggerLocationEvent(const std::string& location);
   void RunMerchantEncounter(const MerchantData& merchant_data);
   Merchant BuildMerchant(const MerchantData& md) const;
+
+  Enemy BuildEnemy(const EnemyData& ed) const;
 
   void ApplyDialogueEffect(const std::string& effect_type, const std::string& effect_value);
   void GiveItemToHero(const std::string& item_spec);

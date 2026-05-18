@@ -110,12 +110,7 @@ void Game::TriggerLocationEvent(const std::string& location) {
       const EnemyData* ed = db_.GetEnemyById(enemy_id);
       if (!ed) return;
 
-      BodyParts ep{ ed->head_hp, ed->body_hp, ed->arms_hp, ed->legs_hp };
-      int arms_pen = db_.GetConfigInt("broken_arms_attack_penalty", 3);
-      int legs_pen = db_.GetConfigInt("broken_legs_agility_penalty", 3);
-      Enemy enemy(ed->name, ed->attack, ed->defense, ed->agility, ep,
-                  ed->reward_gold, ed->description, arms_pen, legs_pen);
-
+      Enemy enemy = BuildEnemy(*ed);
       bool won = battle_system_->StartBattle(*hero_, enemy);
       if (!won) { game_over_ = true; ShowDefeat(); }
     } else {
@@ -169,12 +164,7 @@ void Game::RunRoom(Room& room) {
     const EnemyData* ed = db_.GetEnemyById(rd.enemy_id);
     if (ed) {
       PressEnter();
-      BodyParts ep{ ed->head_hp, ed->body_hp, ed->arms_hp, ed->legs_hp };
-      int arms_pen = db_.GetConfigInt("broken_arms_attack_penalty", 3);
-      int legs_pen = db_.GetConfigInt("broken_legs_agility_penalty", 3);
-      Enemy enemy(ed->name, ed->attack, ed->defense, ed->agility, ep,
-                  ed->reward_gold, ed->description, arms_pen, legs_pen);
-
+      Enemy enemy = BuildEnemy(*ed);
       bool won = battle_system_->StartBattle(*hero_, enemy);
       if (!won) {
         game_over_ = true;
@@ -286,12 +276,7 @@ void Game::HandleFinalApproach() {
       const EnemyData* ed = db_.GetEnemyById(enemy_id);
       if (!ed) return;
 
-      BodyParts ep{ ed->head_hp, ed->body_hp, ed->arms_hp, ed->legs_hp };
-      int arms_pen = db_.GetConfigInt("broken_arms_attack_penalty", 3);
-      int legs_pen = db_.GetConfigInt("broken_legs_agility_penalty", 3);
-      Enemy ryota(ed->name, ed->attack, ed->defense, ed->agility, ep,
-                  ed->reward_gold, ed->description, arms_pen, legs_pen);
-
+      Enemy ryota = BuildEnemy(*ed);
       bool won = battle_system_->StartBattle(*hero_, ryota);
       if (won) ShowVictory();
       else     ShowDefeat();
@@ -385,6 +370,14 @@ void Game::RunMerchantEncounter(const MerchantData& md) {
              + "  (осталось золота: " + std::to_string(hero_->GetGold()) + ")";
     }
   }
+}
+
+Enemy Game::BuildEnemy(const EnemyData& ed) const {
+  BodyParts ep{ ed.head_hp, ed.body_hp, ed.arms_hp, ed.legs_hp };
+  int arms_pen = db_.GetConfigInt("broken_arms_attack_penalty", 3);
+  int legs_pen = db_.GetConfigInt("broken_legs_agility_penalty", 3);
+  return Enemy(ed.name, ed.attack, ed.defense, ed.agility, ep,
+               ed.reward_gold, ed.description, arms_pen, legs_pen);
 }
 
 Merchant Game::BuildMerchant(const MerchantData& md) const {
