@@ -1,0 +1,5 @@
+id;part_name;hit_chance_base;damage_multiplier_pct
+0;head;20;300
+1;body;80;150
+2;arms;60;100
+3;legs;65;80

@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>17.0</VCProjectVersion>
+    <ProjectGuid>{8F4E2B1A-C3D6-4E8F-9A2B-D7F1E3C5A8B4}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>LeafOfSakura</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+
+  <!-- Рабочая директория — папка проекта, рядом с data/ -->
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LocalDebuggerWorkingDirectory>$(ProjectDir)</LocalDebuggerWorkingDirectory>
+    <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
+    <OutDir>$(SolutionDir)bin\Debug\</OutDir>
+    <IntDir>$(SolutionDir)obj\Debug\</IntDir>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>$(SolutionDir)bin\Release\</OutDir>
+    <IntDir>$(SolutionDir)obj\Release\</IntDir>
+  </PropertyGroup>
+
+  <!-- Debug настройки компилятора -->
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <Optimization>Disabled</Optimization>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <AdditionalIncludeDirectories>$(ProjectDir)src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+
+  <!-- Release настройки компилятора -->
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <AdditionalIncludeDirectories>$(ProjectDir)src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+
+  <!-- Исходные файлы (.cpp) -->
+  <ItemGroup>
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\Game.cpp" />
+    <ClCompile Include="src\core\Character.cpp" />
+    <ClCompile Include="src\core\Hero.cpp" />
+    <ClCompile Include="src\core\Enemy.cpp" />
+    <ClCompile Include="src\systems\BattleSystem.cpp" />
+    <ClCompile Include="src\systems\BattleSystem_Draw.cpp" />
+    <ClCompile Include="src\systems\DialogueSystem.cpp" />
+    <ClCompile Include="src\items\UsableItem.cpp" />
+    <ClCompile Include="src\items\Inventory.cpp" />
+    <ClCompile Include="src\world\Room.cpp" />
+    <ClCompile Include="src\world\Castle.cpp" />
+    <ClCompile Include="src\commerce\Shop.cpp" />
+    <ClCompile Include="src\commerce\Merchant.cpp" />
+    <ClCompile Include="src\data\CsvParser.cpp" />
+    <ClCompile Include="src\data\GameDatabase_Load.cpp" />
+    <ClCompile Include="src\data\GameDatabase_Query.cpp" />
+  </ItemGroup>
+
+  <!-- Заголовочные файлы (.h) -->
+  <ItemGroup>
+    <ClInclude Include="src\Game.h" />
+    <ClInclude Include="src\ConsoleUtils.h" />
+    <ClInclude Include="src\core\Character.h" />
+    <ClInclude Include="src\core\Hero.h" />
+    <ClInclude Include="src\core\Enemy.h" />
+    <ClInclude Include="src\systems\BattleSystem.h" />
+    <ClInclude Include="src\systems\DialogueSystem.h" />
+    <ClInclude Include="src\items\Item.h" />
+    <ClInclude Include="src\items\UsableItem.h" />
+    <ClInclude Include="src\items\Inventory.h" />
+    <ClInclude Include="src\world\Room.h" />
+    <ClInclude Include="src\world\Castle.h" />
+    <ClInclude Include="src\commerce\Shop.h" />
+    <ClInclude Include="src\commerce\Merchant.h" />
+    <ClInclude Include="src\data\CsvParser.h" />
+    <ClInclude Include="src\data\GameDatabase.h" />
+  </ItemGroup>
+
+  <!-- CSV-таблицы данных -->
+  <ItemGroup>
+    <None Include="data\game_config.csv" />
+    <None Include="data\body_part_config.csv" />
+    <None Include="data\characters.csv" />
+    <None Include="data\enemies.csv" />
+    <None Include="data\castles.csv" />
+    <None Include="data\rooms.csv" />
+    <None Include="data\usable_items.csv" />
+    <None Include="data\dialogues.csv" />
+    <None Include="data\dialogue_choices.csv" />
+    <None Include="data\events.csv" />
+    <None Include="data\shop_items.csv" />
+    <None Include="data\merchants.csv" />
+  </ItemGroup>
+
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+
+</Project>

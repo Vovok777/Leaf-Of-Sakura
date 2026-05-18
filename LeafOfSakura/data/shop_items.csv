@@ -1,0 +1,17 @@
+id;shop_id;item_type;item_id;price_override
+1;1;usable;1;40
+2;1;usable;2;25
+3;1;usable;3;35
+4;1;usable;4;30
+5;1;usable;7;20
+6;1;usable;8;28
+7;2;usable;1;45
+8;2;usable;5;55
+9;2;usable;6;50
+10;2;usable;7;20
+11;2;usable;3;40
+12;3;usable;1;40
+13;3;usable;5;55
+14;3;usable;6;50
+15;3;usable;3;35
+16;3;usable;8;28

@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Исходные файлы">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx</Extensions>
+    </Filter>
+    <Filter Include="Заголовочные файлы">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx</Extensions>
+    </Filter>
+    <Filter Include="Таблицы данных">
+      <UniqueIdentifier>{E2E5E6F3-1234-4567-89AB-CDEF01234567}</UniqueIdentifier>
+      <Extensions>csv</Extensions>
+    </Filter>
+    <Filter Include="Исходные файлы\core">
+      <UniqueIdentifier>{A1B2C3D4-E5F6-7890-ABCD-EF1234567891}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\systems">
+      <UniqueIdentifier>{B2C3D4E5-F6A7-8901-BCDE-F12345678901}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\items">
+      <UniqueIdentifier>{C3D4E5F6-A7B8-9012-CDEF-123456789012}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\world">
+      <UniqueIdentifier>{D4E5F6A7-B8C9-0123-DEF0-234567890123}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\commerce">
+      <UniqueIdentifier>{E5F6A7B8-C9D0-1234-EF01-345678901234}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\data">
+      <UniqueIdentifier>{F6A7B8C9-D0E1-2345-F012-456789012345}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Заголовочные файлы\core">
+      <UniqueIdentifier>{A7B8C9D0-E1F2-3456-0123-567890123456}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Заголовочные файлы\systems">
+      <UniqueIdentifier>{B8C9D0E1-F2A3-4567-1234-678901234567}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Заголовочные файлы\items">
+      <UniqueIdentifier>{C9D0E1F2-A3B4-5678-2345-789012345678}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Заголовочные файлы\world">
+      <UniqueIdentifier>{D0E1F2A3-B4C5-6789-3456-890123456789}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Заголовочные файлы\commerce">
+      <UniqueIdentifier>{E1F2A3B4-C5D6-7890-4567-901234567890}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Заголовочные файлы\data">
+      <UniqueIdentifier>{F2A3B4C5-D6E7-8901-5678-012345678901}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\main.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\Character.cpp">
+      <Filter>Исходные файлы\core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\Hero.cpp">
+      <Filter>Исходные файлы\core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\Enemy.cpp">
+      <Filter>Исходные файлы\core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\systems\BattleSystem.cpp">
+      <Filter>Исходные файлы\systems</Filter>
+    </ClCompile>
+    <ClCompile Include="src\systems\DialogueSystem.cpp">
+      <Filter>Исходные файлы\systems</Filter>
+    </ClCompile>
+    <ClCompile Include="src\items\Weapon.cpp">
+      <Filter>Исходные файлы\items</Filter>
+    </ClCompile>
+    <ClCompile Include="src\items\UsableItem.cpp">
+      <Filter>Исходные файлы\items</Filter>
+    </ClCompile>
+    <ClCompile Include="src\items\Inventory.cpp">
+      <Filter>Исходные файлы\items</Filter>
+    </ClCompile>
+    <ClCompile Include="src\world\Room.cpp">
+      <Filter>Исходные файлы\world</Filter>
+    </ClCompile>
+    <ClCompile Include="src\world\Castle.cpp">
+      <Filter>Исходные файлы\world</Filter>
+    </ClCompile>
+    <ClCompile Include="src\commerce\Shop.cpp">
+      <Filter>Исходные файлы\commerce</Filter>
+    </ClCompile>
+    <ClCompile Include="src\commerce\Merchant.cpp">
+      <Filter>Исходные файлы\commerce</Filter>
+    </ClCompile>
+    <ClCompile Include="src\data\CsvParser.cpp">
+      <Filter>Исходные файлы\data</Filter>
+    </ClCompile>
+    <ClCompile Include="src\systems\BattleSystem_Draw.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="src\data\GameDatabase_Load.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="src\data\GameDatabase_Query.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\Game.h">
+      <Filter>Заголовочные файлы</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ConsoleUtils.h">
+      <Filter>Заголовочные файлы</Filter>
+    </ClInclude>
+    <ClInclude Include="src\core\Character.h">
+      <Filter>Заголовочные файлы\core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\core\Hero.h">
+      <Filter>Заголовочные файлы\core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\core\Enemy.h">
+      <Filter>Заголовочные файлы\core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\systems\BattleSystem.h">
+      <Filter>Заголовочные файлы\systems</Filter>
+    </ClInclude>
+    <ClInclude Include="src\systems\DialogueSystem.h">
+      <Filter>Заголовочные файлы\systems</Filter>
+    </ClInclude>
+    <ClInclude Include="src\items\Item.h">
+      <Filter>Заголовочные файлы\items</Filter>
+    </ClInclude>
+    <ClInclude Include="src\items\Weapon.h">
+      <Filter>Заголовочные файлы\items</Filter>
+    </ClInclude>
+    <ClInclude Include="src\items\UsableItem.h">
+      <Filter>Заголовочные файлы\items</Filter>
+    </ClInclude>
+    <ClInclude Include="src\items\Inventory.h">
+      <Filter>Заголовочные файлы\items</Filter>
+    </ClInclude>
+    <ClInclude Include="src\world\Room.h">
+      <Filter>Заголовочные файлы\world</Filter>
+    </ClInclude>
+    <ClInclude Include="src\world\Castle.h">
+      <Filter>Заголовочные файлы\world</Filter>
+    </ClInclude>
+    <ClInclude Include="src\commerce\Shop.h">
+      <Filter>Заголовочные файлы\commerce</Filter>
+    </ClInclude>
+    <ClInclude Include="src\commerce\Merchant.h">
+      <Filter>Заголовочные файлы\commerce</Filter>
+    </ClInclude>
+    <ClInclude Include="src\data\CsvParser.h">
+      <Filter>Заголовочные файлы\data</Filter>
+    </ClInclude>
+    <ClInclude Include="src\data\GameDatabase.h">
+      <Filter>Заголовочные файлы\data</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="data\game_config.csv">
+      <Filter>Таблицы данных</Filter>
+    </None>
+    <None Include="data\body_part_config.csv">
+      <Filter>Таблицы данных</Filter>
+    </None>
+    <None Include="data\characters.csv">
+      <Filter>Таблицы данных</Filter>
+    </None>
+    <None Include="data\enemies.csv">
+      <Filter>Таблицы данных</Filter>
+    </None>
+    <None Include="data\castles.csv">
+      <Filter>Таблицы данных</Filter>
+    </None>
+    <None Include="data\rooms.csv">
+      <Filter>Таблицы данных</Filter>
+    </None>
+    <None Include="data\weapons.csv">
+      <Filter>Таблицы данных</Filter>
+    </None>
+    <None Include="data\usable_items.csv">
+      <Filter>Таблицы данных</Filter>
+    </None>
+    <None Include="data\dialogues.csv">
+      <Filter>Таблицы данных</Filter>
+    </None>
+    <None Include="data\dialogue_choices.csv">
+      <Filter>Таблицы данных</Filter>
+    </None>
+    <None Include="data\events.csv">
+      <Filter>Таблицы данных</Filter>
+    </None>
+    <None Include="data\shop_items.csv">
+      <Filter>Таблицы данных</Filter>
+    </None>
+    <None Include="data\merchants.csv">
+      <Filter>Таблицы данных</Filter>
+    </None>
+  </ItemGroup>
+</Project>
